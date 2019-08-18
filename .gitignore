@@ -6,6 +6,9 @@ __pycache__/
 # IDE files
 .idea/
 
+# Config files
+money_bot/local_config.py
+
 # C extensions
 *.so
 
