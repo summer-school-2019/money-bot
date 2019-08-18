@@ -17,9 +17,6 @@
 Сам отсортирует импорты
 ![isort config](https://i.ibb.co/sVn0MFT/image.png)
 
-### Pylint 
-Просто плагин для пайчарма
-
 ## Для добавления изменений: 
 1. Создаем новую ветку `git branch new_cool_feature`
 2. Переходим на нее `git checkout new_cool_feature`
@@ -34,3 +31,17 @@
 3. `source .venv/bin/activate` - *nix
    `.venv/bin/activate.exe` - windows (но это не точно)
  
+## Prerequirements
+
+### Black
+Сам отформатирует ваш код. После установки заходим в 
+`Tools -> External Tools -> Black/isort`
+ 
+Инструкция по установке black:
+[here](https://github.com/psf/black#pycharmintellij-idea) 
+![black config](https://i.ibb.co/cgnr7Cr/image.png)
+
+
+### Isort
+Сам отсортирует импорты
+![isort config](https://i.ibb.co/sVn0MFT/image.png)
