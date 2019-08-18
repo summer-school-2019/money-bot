@@ -10,6 +10,15 @@
 Создаем новый файл *local_config.py*, в него копируем все из *example_config.py*, меняем
 *local_config.py* 
 
+## Code check from the root of the project
+1. ```black money_bot```
+2. ```pylint money_bot ```
+3. ```isort -rc money_bot```
+
+Перед мержем ваших изменений, в пулл реквесте будет отмечено, пройдены ли эти проверки вашим кодов, или нет.
+Поэтому не выйдет добавить плохой код. 
+
+
 ## Для добавления изменений: 
 1. Создаем новую ветку `git branch new_cool_feature`
 2. Переходим на нее `git checkout new_cool_feature`
