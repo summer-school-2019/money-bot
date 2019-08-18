@@ -1,4 +1,6 @@
 # Money-bot
+[![Build Status](https://travis-ci.com/summer-school-2019/money-bot.svg?branch=develop)](https://travis-ci.com/summer-school-2019/money-bot)
+
 Основная ветка - develop.
 
 ### Конфигурация 
