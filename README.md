@@ -17,6 +17,9 @@
 Сам отсортирует импорты
 ![isort config](https://i.ibb.co/sVn0MFT/image.png)
 
+### Pylint 
+Просто плагин для пайчарма
+
 ## Для добавления изменений: 
 1. Создаем новую ветку `git branch new_cool_feature`
 2. Переходим на нее `git checkout new_cool_feature`
