@@ -1,11 +1,11 @@
 # Money-bot
 [![Build Status](https://travis-ci.com/summer-school-2019/money-bot.svg?branch=develop)](https://travis-ci.com/summer-school-2019/money-bot)
 
-Основная ветка - develop.
+Основная ветка - develop. t
 
 ### Конфигурация 
 Для того, чтобы задать конфигурационные параметры для локального использования:
-1. `cp example_config.py local_config.py`
+1. `cp example_config.py locaconfig.py`
 2. Редактируем *local_config.py*
 
 Словами:
