@@ -12,7 +12,8 @@
 Создаем новый файл *local_config.py*, в него копируем все из *example_config.py*, меняем
 *local_config.py* 
 
-## Code check from the root of the project
+## Code check 
+Run from the root of the project
 1. ```black money_bot```. Чек код стайла
 2. ```isort -rc money_bot```. Чек импортов
 3. ```pylint money_bot ```. Чек всего
