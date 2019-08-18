@@ -12,6 +12,9 @@
 Создаем новый файл *local_config.py*, в него копируем все из *example_config.py*, меняем
 *local_config.py* 
 
+### Запуск
+Для запуска проекта выполните команду `python3 -m money_bot`
+
 ## Code check 
 Run from the root of the project
 1. ```black money_bot```. Чек код стайла

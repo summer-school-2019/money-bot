@@ -4,7 +4,10 @@ from aiogram import Bot, Dispatcher
 from pymongo import MongoClient
 from umongo import Instance
 
-from money_bot.local_config import *
+try:
+    from money_bot.local_config import BOT_TOKEN, DB_HOST, DB_NAME
+except ImportError:
+    from money_bot.example_config import BOT_TOKEN, DB_HOST, DB_NAME
 
 logging.basicConfig(level=logging.DEBUG)
 
