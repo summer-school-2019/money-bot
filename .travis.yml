@@ -6,5 +6,8 @@ install:
 
 script:
   - black -q --check money_bot
-  - pylint -E money_bot
+  - isort -rc money_bot
+  - pylint -E money_bo
+
+after_success:
   - pylint money_bot
