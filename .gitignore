@@ -105,3 +105,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# project-specific configuration files
+money_bot/local_config.py

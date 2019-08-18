@@ -1,5 +1,14 @@
 # Money-bot
-Основная ветка - develop. 
+Основная ветка - develop.
+
+### Конфигурация 
+Для того, чтобы задать конфигурационные параметры для локального использования:
+1. `cp example_config.py local_config.py`
+2. Редактируем *local_config.py*
+
+Словами:
+Создаем новый файл *local_config.py*, в него копируем все из *example_config.py*, меняем
+*local_config.py* 
 
 ## Для добавления изменений: 
 1. Создаем новую ветку `git branch new_cool_feature`
