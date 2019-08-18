@@ -9,7 +9,7 @@
 5. Делаем Pull request на гитхабе. Мержим из вашей ветки в develop
 
 ## Downloading on local pc:
-1. `git clone git@github.com:summer-school-2019/Money-bot.git`
+1. `git clone git@github.com:summer-school-2019/money-bot.git`
 2. `python3.7 -m virtualenv .venv` Создаем новое окружние. Возможно, у вас на пк нужно заменить на
 `python3 -m virtualenv .venv`
 3. `source .venv/bin/activate` - *nix
