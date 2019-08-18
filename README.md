@@ -1,21 +1,5 @@
 # Money-bot
-
 Основная ветка - develop. 
-
-## Prerequirements
-
-### Black
-Сам отформатирует ваш код. После установки заходим в 
-`Tools -> External Tools -> Black/isort`
- 
-Инструкция по установке black:
-[here](https://github.com/psf/black#pycharmintellij-idea) 
-![black config](https://i.ibb.co/cgnr7Cr/image.png)
-
-
-### Isort
-Сам отсортирует импорты
-![isort config](https://i.ibb.co/sVn0MFT/image.png)
 
 ## Для добавления изменений: 
 1. Создаем новую ветку `git branch new_cool_feature`
@@ -39,9 +23,12 @@
  
 Инструкция по установке black:
 [here](https://github.com/psf/black#pycharmintellij-idea) 
+
 ![black config](https://i.ibb.co/cgnr7Cr/image.png)
 
 
 ### Isort
-Сам отсортирует импорты
+Сам отсортирует импорты.
+
+
 ![isort config](https://i.ibb.co/sVn0MFT/image.png)
