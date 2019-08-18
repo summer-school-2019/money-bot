@@ -11,12 +11,12 @@
 *local_config.py* 
 
 ## Code check from the root of the project
-1. ```black money_bot```
-2. ```pylint money_bot ```
-3. ```isort -rc money_bot```
+1. ```black money_bot```. Чек код стайла
+2. ```isort -rc money_bot```. Чек импортов
+3. ```pylint money_bot ```. Чек всего
 
 Перед мержем ваших изменений, в пулл реквесте будет отмечено, пройдены ли эти проверки вашим кодов, или нет.
-Поэтому не выйдет добавить плохой код. 
+
 
 
 ## Для добавления изменений: 
