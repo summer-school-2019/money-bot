@@ -31,11 +31,12 @@ Run from the root of the project
 
 ## Downloading on local pc:
 1. `git clone git@github.com:summer-school-2019/money-bot.git`
-2. `python3.7 -m virtualenv .venv` Создаем новое окружние. Возможно, у вас на пк нужно заменить на
+2. `python3.7 -m virtualenv .venv` Создаем новое окружение. Возможно, у вас на пк нужно заменить на
 `python3 -m virtualenv .venv`
 3. `source .venv/bin/activate` - *nix
    `.venv/bin/activate.exe` - windows (но это не точно)
- 
+4. `pip install -r requirements.txt`
+
 ## Prerequirements
 
 ### Black
