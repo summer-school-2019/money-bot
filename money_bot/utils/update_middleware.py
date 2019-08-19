@@ -5,7 +5,6 @@ from money_bot.utils.models import User
 
 
 async def update_user(chat_id, **kwargs):
-
     user = await User.find_one({"chat_id": chat_id})
 
     if user is None:
@@ -34,3 +33,7 @@ class UpdateUserMiddleware(BaseMiddleware):
                 last_name=callback_query.from_user.last_name,
                 username=callback_query.from_user.username,
             )
+
+
+def on_startup(dp: Dispatcher):
+    dp.middleware.setup(UpdateUserMiddleware())
