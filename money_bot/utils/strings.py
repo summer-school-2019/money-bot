@@ -3,6 +3,6 @@ MAIN_MENU_BUTTONS_LABELS = {
     "play": "🎲 Играть",
     "balance": "💰 Баланс",
     "invite": "👥 Пригласить друзей",
-    "withdrawal": "📬 Баланс",
+    "withdrawal": "📬 Вывод",
     "rules": "📑 Правила",
 }
