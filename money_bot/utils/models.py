@@ -1,6 +1,9 @@
-from motor.motor_asyncio import AsyncIOMotorClient
-from umongo import Instance, Document, fields
+# pylint: skip-file
+
 import asyncio
+
+from motor.motor_asyncio import AsyncIOMotorClient
+from umongo import Document, Instance, fields
 
 try:
     from money_bot import local_config as config
@@ -14,11 +17,24 @@ instance = Instance(db)
 @instance.register
 class User(Document):
 
-    email = fields.EmailField(required=True, unique=True)
-    friends = fields.ListField(fields.ReferenceField("User"))
+    chat_id = fields.IntegerField(required=True, unique=True)
+    money = fields.IntegerField(default=0)
+    first_name = fields.StringField()
+    last_name = fields.StringField()
+    username = fields.StringField()
+    tasks = fields.ListField(fields.ReferenceField("Task"))
+
+
+@instance.register
+class Task(Document):
+
+    chat_id = fields.IntegerField(required=True)
+    channel_name = fields.StringField()
 
 
 async def main():
     await User.ensure_indexes()
+    await Task.ensure_indexes()
+
 
 asyncio.get_event_loop().create_task(main())
