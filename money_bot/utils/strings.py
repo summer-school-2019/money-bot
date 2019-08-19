@@ -1,8 +1,8 @@
 MAIN_MENU_BUTTONS_LABELS = {
-    "earn": "earn",
-    "play": "play",
-    "balance": "balance",
-    "invite": "invite friends",
-    "withdrawal": "withdrawal",
-    "rules": "rules",
+    "earn": "🤑 Заработать",
+    "play": "🎲 Играть",
+    "balance": "💰 Баланс",
+    "invite": "👥 Пригласить друзей",
+    "withdrawal": "📬 Баланс",
+    "rules": "📑 Правила",
 }
