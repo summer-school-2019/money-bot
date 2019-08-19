@@ -23,6 +23,8 @@ class User(Document):
     last_name = fields.StringField()
     username = fields.StringField()
     done_tasks = fields.ListField(fields.ReferenceField("Task"))
+    referrer_id = fields.IntegerField()
+    user_id = fields.IntegerField(required=True, unique=True)
 
 
 @instance.register
