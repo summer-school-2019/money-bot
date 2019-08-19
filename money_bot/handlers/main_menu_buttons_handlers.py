@@ -1,12 +1,13 @@
 from aiogram import Dispatcher, types
 
-from money_bot.handlers import states
+from money_bot.utils import states
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
+from money_bot.handlers import earn_handlers
 
 
 async def process_earn_btn(message: types.Message):
-    await states.Form.earn_menu_ans.set()
-    await message.answer(f'"{message.text}" clicked')
+    await states.EarnStates.giving_a_task.set()
+    await earn_handlers.entry_point(message)
 
 
 async def process_play_btn(message: types.Message):

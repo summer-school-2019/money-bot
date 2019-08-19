@@ -1,8 +1,7 @@
 # This is the bot for any markups
 from aiogram import types
-from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
-from money_bot.utils.models import Task
+from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
 
 def get_main_menu_markup():
@@ -20,16 +19,15 @@ def get_main_menu_markup():
     return keyboard_markup
 
 
-def get_keyboard():
-    return types.InlineKeyboardMarkup().row(
-        types.InlineKeyboardButton("Подписаться", url=Task.url),
+def earn_keyboard(task):
+    return types.InlineKeyboardMarkup(row_width=1).add(
+        types.InlineKeyboardButton("Подписаться", url=task.url),
         types.InlineKeyboardButton("Забрать награду", callback_data="Забрать награду"),
         types.InlineKeyboardButton("Пропустить задание", callback_data="Пропустить задание"),
         types.InlineKeyboardButton("Вернуться в меню", callback_data="Вернуться в меню"),
     )
 
-
-def get_keyboard_1():
+def agree_new_task_keyboard():
     return types.InlineKeyboardMarkup().row(
         types.InlineKeyboardButton("Да", callback_data="Да"), types.InlineKeyboardButton("Нет", callback_data="Нет")
     )
