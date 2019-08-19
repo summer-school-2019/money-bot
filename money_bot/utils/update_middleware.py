@@ -34,7 +34,3 @@ class UpdateUserMiddleware(BaseMiddleware):
                 last_name=callback_query.from_user.last_name,
                 username=callback_query.from_user.username,
             )
-
-
-def on_startup(dp: Dispatcher):
-    dp.middleware.setup(UpdateUserMiddleware())

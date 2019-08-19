@@ -22,7 +22,7 @@ class User(Document):
     first_name = fields.StringField()
     last_name = fields.StringField()
     username = fields.StringField()
-    tasks = fields.ListField(fields.ReferenceField("Task"))
+    done_tasks = fields.ListField(fields.ReferenceField("Task"))
 
 
 @instance.register
