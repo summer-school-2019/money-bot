@@ -3,14 +3,15 @@ from money_bot.utils import markups
 from money_bot.utils.models import Task, User
 from money_bot.utils.states import EarnStates
 from aiogram import Dispatcher, types
+from money_bot.utils.strings import EARN_MENU_TEXT
 
 
 async def entry_point(message: types.Message):
-
+    print('ads------\n\n\n\n\n\n')
     task = await Task.find_one()
     await bot.send_message(
         message.chat.id,
-        f"Подпишись на группу {task.channel_name} и заработай 20 монет!", reply_markup=markups.earn_keyboard(task))
+        EARN_MENU_TEXT["new_task"].format(task.channel_name), reply_markup=markups.earn_keyboard(task))
     await EarnStates.making_a_decision.set()
 
 

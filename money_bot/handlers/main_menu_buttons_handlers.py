@@ -37,20 +37,20 @@ async def process_rules_btn(message: types.Message):
 
 def register_handlers(handler_dp: Dispatcher):
     handler_dp.register_message_handler(
-        process_earn_btn, text=MAIN_MENU_BUTTONS_LABELS["earn"], state=states.Form.main_menu_ans
+        process_earn_btn, text=MAIN_MENU_BUTTONS_LABELS["earn"], state="*"
     )
     handler_dp.register_message_handler(
-        process_play_btn, text=MAIN_MENU_BUTTONS_LABELS["play"], state=states.Form.main_menu_ans
+        process_play_btn, text=MAIN_MENU_BUTTONS_LABELS["play"], state="*"
     )
     handler_dp.register_message_handler(
-        process_balance_btn, text=MAIN_MENU_BUTTONS_LABELS["balance"], state=states.Form.main_menu_ans
+        process_balance_btn, text=MAIN_MENU_BUTTONS_LABELS["balance"], state="*"
     )
     handler_dp.register_message_handler(
-        process_invite_btn, text=MAIN_MENU_BUTTONS_LABELS["invite"], state=states.Form.main_menu_ans
+        process_invite_btn, text=MAIN_MENU_BUTTONS_LABELS["invite"], state="*"
     )
     handler_dp.register_message_handler(
-        process_withdrawal_btn, text=MAIN_MENU_BUTTONS_LABELS["withdrawal"], state=states.Form.main_menu_ans
+        process_withdrawal_btn, text=MAIN_MENU_BUTTONS_LABELS["withdrawal"], state="*"
     )
     handler_dp.register_message_handler(
-        process_rules_btn, text=MAIN_MENU_BUTTONS_LABELS["rules"], state=states.Form.main_menu_ans
+        process_rules_btn, text=MAIN_MENU_BUTTONS_LABELS["rules"], state="*"
     )

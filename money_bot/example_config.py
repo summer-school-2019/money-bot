@@ -2,3 +2,4 @@
 BOT_TOKEN = ""
 DB_HOST = ""
 DB_NAME = ""
+MONEY_FOR_GROUP = 20
