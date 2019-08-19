@@ -17,7 +17,7 @@ async def update_user(chat_id, **kwargs):
 
 
 class UpdateUserMiddleware(BaseMiddleware):
-    async def on_pre_process_message(self, message: types.Message):
+    async def on_pre_process_message(self, message: types.Message, data: dict):
         await update_user(
             chat_id=message.from_user.id,
             first_name=message.from_user.first_name,
@@ -25,7 +25,7 @@ class UpdateUserMiddleware(BaseMiddleware):
             username=message.from_user.username,
         )
 
-    async def on_pre_process_callback_query(self, callback_query: types.CallbackQuery):
+    async def on_pre_process_callback_query(self, callback_query: types.CallbackQuery, data: dict):
         if callback_query.message and callback_query.message.from_user:
             await update_user(
                 chat_id=callback_query.from_user.id,
