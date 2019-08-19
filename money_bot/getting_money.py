@@ -23,10 +23,9 @@ class states_group(StatesGroup):
     new_task = State()
     main_menu = State()
     button_result = State()
-    main_menu = State()
 
 
-@dp.message_handler(state=states_group.new_task_ok, commands="/start")
+@dp.message_handler(state=states_group.new_task_ok, commands="start")
 async def menu(message: types.Message, state: FSMContext):
     get_keyboard()
 
