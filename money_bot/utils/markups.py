@@ -24,7 +24,6 @@ def earn_keyboard(task):
         types.InlineKeyboardButton("Подписаться", url=task.url),
         types.InlineKeyboardButton("Забрать награду", callback_data="Забрать награду"),
         types.InlineKeyboardButton("Пропустить задание", callback_data="Пропустить задание"),
-        types.InlineKeyboardButton("Вернуться в меню", callback_data="Вернуться в меню"),
     )
 
 def agree_new_task_keyboard():

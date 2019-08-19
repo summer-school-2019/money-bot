@@ -25,8 +25,6 @@ async def second_menu(query: types.CallbackQuery):
             await EarnStates.giving_a_task.set()
     if query.data == "Пропустить задание":
         await EarnStates.giving_a_task.set()
-    if query.data == "Вернуться в меню":
-        await EarnStates.main_menu.set()
 
     await bot.send_message(query.message.chat.id, "Хочешь получить еще задание?", reply_markup=markups.earn_keyboard())
     await EarnStates.button_result.set()
