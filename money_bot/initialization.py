@@ -1,6 +1,7 @@
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from money_bot.utils import update_middleware
 
@@ -12,5 +13,5 @@ except ImportError:
 logging.basicConfig(level=logging.DEBUG)
 
 bot = Bot(config.BOT_TOKEN)
-dp = Dispatcher(bot)
+dp = Dispatcher(bot, storage=MemoryStorage())
 update_middleware.on_startup(dp)
