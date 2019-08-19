@@ -13,7 +13,7 @@
 *local_config.py* 
 
 ### Запуск
-Для запуска проекта выполните команду `python3 -m money_bot`
+Для запуска проекта выполните команду `python -m money_bot`
 
 ## Code check 
 Run from the root of the project
