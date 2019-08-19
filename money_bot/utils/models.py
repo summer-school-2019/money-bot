@@ -23,6 +23,7 @@ class User(Document):
     last_name = fields.StringField()
     username = fields.StringField()
     done_tasks = fields.ListField(fields.ReferenceField("Task"))
+    user_id = fields.IntegerField(required=True, unique=True)
 
 
 @instance.register
@@ -30,6 +31,7 @@ class Task(Document):
 
     chat_id = fields.IntegerField(required=True)
     channel_name = fields.StringField()
+    url = fields.URLField()
 
 
 async def main():
