@@ -1,7 +1,6 @@
 from aiogram import Dispatcher, types
 
-from money_bot.handlers import states
-from money_bot.utils import markups
+from money_bot.utils import markups, states
 
 
 async def cmd_start(message: types.Message):
