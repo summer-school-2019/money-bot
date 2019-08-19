@@ -1,7 +1,7 @@
 import logging
 
 from aiogram import Bot, Dispatcher
-from pymongo import MongoClient
+from motor import MotorClient
 from umongo import Instance
 
 try:
@@ -13,5 +13,5 @@ logging.basicConfig(level=logging.DEBUG)
 
 bot = Bot(config.BOT_TOKEN)
 dp = Dispatcher(bot)
-db = MongoClient(config.DB_HOST)[config.DB_NAME]
+db = MotorClient(config.DB_HOST)[config.DB_NAME]
 instance = Instance(db)
