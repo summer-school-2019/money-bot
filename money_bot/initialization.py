@@ -2,7 +2,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 
-from money_bot.utils.update_middleware import UpdateUserMiddleware, on_startup
+from money_bot.utils import update_middleware
 
 try:
     from money_bot import local_config as config
@@ -13,4 +13,4 @@ logging.basicConfig(level=logging.DEBUG)
 
 bot = Bot(config.BOT_TOKEN)
 dp = Dispatcher(bot)
-on_startup(dp)
+update_middleware.on_startup(dp)
