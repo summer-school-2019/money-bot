@@ -1,4 +1,7 @@
-# This is a file for any configuration of the project
 BOT_TOKEN = ""
-DB_HOST = ""
+
+CLUSTER_NAME = ""
 DB_NAME = ""
+DB_USER_NAME = ""
+DB_USER_PASSWORD = ""
+DB_HOST = f"mongodb+srv://{DB_USER_NAME}:{DB_USER_PASSWORD}@{CLUSTER_NAME}/{DB_NAME}?retryWrites=true&w=majority"
