@@ -1,10 +1,10 @@
 from aiogram import Dispatcher, types
-from money_bot.utils import states
-from money_bot.utils import markups
+
+from money_bot.utils import markups, states
 
 
 async def cmd_start(message: types.Message):
-    await states.Form.main_menu_ans.set()
+    await states.GlobalStates.main_menu_ans.set()
     keyboard_markup = markups.get_main_menu_markup()
     await message.answer("*keyboard shows up*", reply_markup=keyboard_markup)
 
