@@ -32,6 +32,12 @@ def get_earn_markup(task):
     )
 
 
+def get_next_task_markup():
+    return types.InlineKeyboardMarkup(row_width=1).add(
+        types.InlineKeyboardButton("Еще задания", callback_data=earn_factory.new(skip=2))
+    )
+
+
 def get_earn_agree_markup():
     return types.InlineKeyboardMarkup().row(
         types.InlineKeyboardButton("Да", callback_data=earn_agree_factory.new(yes=1)),
