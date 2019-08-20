@@ -12,7 +12,8 @@ async def update_user(user_id, **kwargs):
         await new_user.commit()
     else:
         for k, v in kwargs.items():
-            setattr(user, k, v)
+            if v is not None:
+                setattr(user, k, v)
         await user.commit()
 
 
