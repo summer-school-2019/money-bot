@@ -19,9 +19,9 @@ class User(Document):
 
     user_id = fields.IntegerField(required=True, unique=True)
     money = fields.IntegerField(default=0)
-    first_name = fields.StringField()
+    first_name = fields.StringField(allow_none=True)
     last_name = fields.StringField(allow_none=True)
-    username = fields.StringField()
+    username = fields.StringField(allow_none=True)
     current_task_id = fields.IntegerField(default=-1)
 
 

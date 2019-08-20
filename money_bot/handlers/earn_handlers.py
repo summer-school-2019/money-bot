@@ -1,12 +1,12 @@
-from aiogram import Dispatcher, types
+from aiogram import Bot, Dispatcher, types
 
-from money_bot.initialization import bot
 from money_bot.utils import db_utils, markups
 from money_bot.utils.states import GlobalStates
 from money_bot.utils.strings import EARN_MENU_TEXT, config
 
 
 async def entry_point(message: types.Message, new=False, last_message=None, user_id=None):
+    bot = Bot.get_current()
     """
 
     :param message:
@@ -45,6 +45,7 @@ async def entry_point(message: types.Message, new=False, last_message=None, user
 
 async def check_task(query: types.CallbackQuery, callback_data: dict):
     await query.answer()
+    bot = Bot.get_current()
     task = await db_utils.get_current_task(query.from_user.id)
     user = await db_utils.get_user_by_id(query.from_user.id)
     if callback_data["skip"] == "0":
