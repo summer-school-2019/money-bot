@@ -23,7 +23,7 @@ class UpdateUserMiddleware(BaseMiddleware):
             first_name=message.from_user.first_name,
             last_name=message.from_user.last_name,
             username=message.from_user.username,
-            user_id=message.from_user.id
+            user_id=message.from_user.id,
         )
 
     async def on_pre_process_callback_query(self, callback_query: types.CallbackQuery, data: dict):
@@ -33,7 +33,7 @@ class UpdateUserMiddleware(BaseMiddleware):
                 first_name=callback_query.from_user.first_name,
                 last_name=callback_query.from_user.last_name,
                 username=callback_query.from_user.username,
-                user_id=callback_query.message.from_user.id
+                user_id=callback_query.message.from_user.id,
             )
 
 
