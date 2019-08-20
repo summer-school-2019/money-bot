@@ -2,7 +2,7 @@ import re
 
 from aiogram import Dispatcher, types
 
-from money_bot.local_config import INVITE_REWARD_MONEY_AMOUNT
+from money_bot.example_config import INVITE_REWARD_MONEY_AMOUNT
 from money_bot.utils import db_utils, markups
 
 
