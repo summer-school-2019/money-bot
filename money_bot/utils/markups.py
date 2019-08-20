@@ -17,7 +17,7 @@ def get_main_menu_markup():
         MAIN_MENU_BUTTONS_LABELS["rules"],
     ]
 
-    keyboard_markup = types.ReplyKeyboardMarkup(row_width=2)
+    keyboard_markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
     keyboard_markup.add(*[types.KeyboardButton(btn_text) for btn_text in btns_text])
     return keyboard_markup
 
