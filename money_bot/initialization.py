@@ -3,8 +3,7 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-from money_bot.utils import update_middleware
-from money_bot.utils import register_all_handlers
+from money_bot.utils import register_all_handlers, update_middleware
 
 try:
     from money_bot import local_config as config

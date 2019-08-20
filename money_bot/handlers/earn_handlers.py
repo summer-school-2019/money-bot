@@ -7,9 +7,17 @@ from money_bot.utils.strings import EARN_MENU_TEXT, config
 
 
 async def entry_point(message: types.Message, new=False, last_message=None, user_id=None):
+    """
+
+    :param message:
+    :param new: if it's true, bot will give out new task
+    :param last_message: If last_message is None, bot create new message, so if function get last_message, it means that bot need to edit created message
+    :param user_id:
+    :return:
+    """
     if user_id is None:
         user_id = types.User.get_current().id
-    user = await db_utils.get_current_user(user_id)
+    user = await db_utils.get_user_by_id(user_id)
     if new or user.current_task_id == -1:
         task = await db_utils.get_next_task(user_id)
     else:
@@ -38,7 +46,7 @@ async def entry_point(message: types.Message, new=False, last_message=None, user
 async def check_task(query: types.CallbackQuery, callback_data: dict):
     await query.answer()
     task = await db_utils.get_current_task(query.from_user.id)
-    user = await db_utils.get_current_user(query.from_user.id)
+    user = await db_utils.get_user_by_id(query.from_user.id)
     if callback_data["skip"] == "0":
         chat_member = await bot.get_chat_member(task.chat_id, user.user_id)
         if chat_member is not None and chat_member.is_chat_member():

@@ -1,12 +1,12 @@
 from money_bot.utils import models
 
 
-async def get_current_user(user_id: int):
+async def get_user_by_id(user_id: int):
     return await models.User.find_one({"user_id": user_id})
 
 
 async def get_current_task(user_id: int):
-    user = await get_current_user(user_id)
+    user = await get_user_by_id(user_id)
     if user is None:
         return None
     tasks = await models.Task.find().to_list(length=None)
@@ -16,7 +16,7 @@ async def get_current_task(user_id: int):
 
 
 async def get_next_task(user_id: int):
-    user = await get_current_user(user_id)
+    user = await get_user_by_id(user_id)
     if user is None:
         return None
     tasks = await models.Task.find().to_list(length=None)
