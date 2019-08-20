@@ -25,3 +25,7 @@ async def get_next_task(user_id: int):
     user.current_task_id += 1
     await user.commit()
     return tasks[user.current_task_id]
+
+
+async def get_invited_count(user_id: int):
+    return await models.db.user.count_documents({"referrer_id": user_id})

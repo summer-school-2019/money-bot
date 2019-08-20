@@ -1,6 +1,6 @@
 from aiogram import Dispatcher, types
 
-from money_bot.handlers import earn_handlers
+from money_bot.handlers import earn_handlers, balance_handlers
 from money_bot.utils import states
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
@@ -16,8 +16,8 @@ async def process_play_btn(message: types.Message):
 
 
 async def process_balance_btn(message: types.Message):
-    await states.GlobalStates.balance_menu_ans.set()
-    await message.answer(f'"{message.text}" clicked')
+    await states.GlobalStates.balance_menu.set()
+    await balance_handlers.entry_point(message)
 
 
 async def process_invite_btn(message: types.Message):

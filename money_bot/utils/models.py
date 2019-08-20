@@ -22,6 +22,7 @@ class User(Document):
     first_name = fields.StringField(allow_none=True)
     last_name = fields.StringField(allow_none=True)
     username = fields.StringField(allow_none=True)
+    referrer_id = fields.IntegerField()
     current_task_id = fields.IntegerField(default=-1)
 
 
