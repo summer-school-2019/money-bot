@@ -17,14 +17,12 @@ instance = Instance(db)
 @instance.register
 class User(Document):
 
-    chat_id = fields.IntegerField(required=True, unique=True)
+    user_id = fields.IntegerField(required=True, unique=True)
     money = fields.IntegerField(default=0)
     first_name = fields.StringField()
     last_name = fields.StringField()
     username = fields.StringField()
-    done_tasks = fields.ListField(fields.ReferenceField("Task"))
     current_task_id = fields.IntegerField(default=-1)
-    user_id = fields.IntegerField(required=True, unique=True)
 
 
 @instance.register

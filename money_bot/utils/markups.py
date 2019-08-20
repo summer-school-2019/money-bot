@@ -4,9 +4,7 @@ from aiogram.utils.callback_data import CallbackData
 
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
-
-earn_factory = CallbackData('earn', 'skip')
-earn_agree_factory = CallbackData('earn_agree', 'yes')
+earn_factory = CallbackData("earn", "skip")
 
 
 def get_main_menu_markup():
@@ -35,11 +33,4 @@ def get_earn_markup(task):
 def get_next_task_markup():
     return types.InlineKeyboardMarkup(row_width=1).add(
         types.InlineKeyboardButton("Еще задания", callback_data=earn_factory.new(skip=2))
-    )
-
-
-def get_earn_agree_markup():
-    return types.InlineKeyboardMarkup().row(
-        types.InlineKeyboardButton("Да", callback_data=earn_agree_factory.new(yes=1)),
-        types.InlineKeyboardButton("Нет", callback_data=earn_agree_factory.new(yes=0))
     )

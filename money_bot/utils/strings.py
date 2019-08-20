@@ -21,9 +21,8 @@ EARN_MENU_TEXT = {
 Если в течении 5-ти дней Вы отпишитесь от группы - бот проверит и оштрафует Вас на {config.MONEY_FOR_GROUP} руб
 """,
     "group_check_failed": "Вы не подписаны на группу",
-    "task_cancelled": "✖️ задание удалено"
+    "task_cancelled": "✖️ задание удалено",
+    "no_tasks": "Задания для вас закончились, попробуйте позже",
 }
 
-EARN_MENU_BUTTONS_LABELS = {
-
-}
+EARN_MENU_BUTTONS_LABELS = {}

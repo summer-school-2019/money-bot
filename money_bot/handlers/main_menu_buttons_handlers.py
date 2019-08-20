@@ -7,7 +7,7 @@ from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
 async def process_earn_btn(message: types.Message):
     await states.GlobalStates.earn_menu.set()
-    await earn_handlers.entry_point(message, new=True)
+    await earn_handlers.entry_point(message)
 
 
 async def process_play_btn(message: types.Message):
