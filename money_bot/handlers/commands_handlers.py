@@ -28,7 +28,6 @@ async def cmd_start(message: types.Message):
         await process_setting_referrer_id(message.from_user.id, referrer_id)
     else:
         await db_utils.set_referrer_id(message.from_user.id, -1)
-
     keyboard_markup = markups.get_main_menu_markup()
     await message.answer(
         f"Привет, {message.from_user.id} - {message.from_user.first_name} {message.from_user.last_name}!",

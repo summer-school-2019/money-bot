@@ -1,27 +1,30 @@
 from aiogram import Dispatcher, types
 
-from money_bot import initialization as init
+from money_bot.handlers import earn_handlers
+
 from money_bot.utils import states
 from money_bot.utils.models import User
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
 
 async def process_earn_btn(message: types.Message):
-    await states.Form.earn_btn_ans.set()
-    await message.answer(f'"{message.text}" clicked')
+    await states.GlobalStates.earn_menu.set()
+    await earn_handlers.entry_point(message)
 
 
 async def process_play_btn(message: types.Message):
-    await states.Form.play_btn_ans.set()
+    await states.GlobalStates.play_menu_ans.set()
     await message.answer(f'"{message.text}" clicked')
 
 
 async def process_balance_btn(message: types.Message):
+    await states.GlobalStates.balance_menu_ans.set()
     await message.answer(f'"{message.text}" clicked')
 
 
 async def process_invite_btn(message: types.Message):
-    bot = await init.bot.me
+    await states.GlobalStates.invite_menu.set()
+    bot = await types.Bot.get_current().me
     current_user = await User.find_one({"user_id": message.from_user.id})
     referral_link = f"https://t.me/{bot.username}?start=referrer_id_{current_user.user_id}"
     await message.answer(referral_link)
@@ -32,6 +35,7 @@ async def process_withdrawal_btn(message: types.Message):
 
 
 async def process_rules_btn(message: types.Message):
+    await states.GlobalStates.rules_menu_ans.set()
     await message.answer(f'"{message.text}" clicked')
 
 

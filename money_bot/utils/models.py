@@ -17,14 +17,13 @@ instance = Instance(db)
 @instance.register
 class User(Document):
 
-    chat_id = fields.IntegerField(required=True, unique=True)
-    money = fields.IntegerField(default=0)
-    first_name = fields.StringField()
-    last_name = fields.StringField()
-    username = fields.StringField()
-    done_tasks = fields.ListField(fields.ReferenceField("Task"))
-    referrer_id = fields.IntegerField()
     user_id = fields.IntegerField(required=True, unique=True)
+    money = fields.IntegerField(default=0)
+    first_name = fields.StringField(allow_none=True)
+    last_name = fields.StringField(allow_none=True)
+    username = fields.StringField(allow_none=True)
+    current_task_id = fields.IntegerField(default=-1)
+    referrer_id = fields.IntegerField()
 
 
 @instance.register
@@ -32,6 +31,7 @@ class Task(Document):
 
     chat_id = fields.IntegerField(required=True)
     channel_name = fields.StringField()
+    url = fields.URLField()
 
 
 async def main():

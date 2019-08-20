@@ -14,6 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 bot = Bot(config.BOT_TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
+
 update_middleware.on_startup(dp)
 
 register_all_handlers.register_all_handlers(dp)
