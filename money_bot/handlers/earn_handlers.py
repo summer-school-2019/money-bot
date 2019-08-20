@@ -8,10 +8,10 @@ from money_bot.utils.strings import EARN_MENU_TEXT, config
 async def entry_point(message: types.Message, new=False, last_message=None, user_id=None):
     bot = Bot.get_current()
     """
-
     :param message:
     :param new: if it's true, bot will give out new task
-    :param last_message: If last_message is None, bot create new message, so if function get last_message, it means that bot need to edit created message
+    :param last_message: If last_message is None, bot create new message, so if function get last_message, 
+    it means that bot need to edit created message
     :param user_id:
     :return:
     """
