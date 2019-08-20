@@ -2,6 +2,7 @@ import re
 
 from aiogram import Dispatcher, types
 
+from money_bot.local_config import FRIEND_INVITATION_AWARD_MONEY_AMOUNT
 from money_bot.utils import markups, states
 from money_bot.utils.models import User
 
@@ -18,12 +19,17 @@ def get_referrer_id_from_message_text(message_text):
 async def set_referrer_id_to_db(current_user_id, referrer_id):
     current_user = await User.find_one({"user_id": current_user_id})
     try:
-        if not current_user.referrer_id:
+        if not current_user.referrer_id and current_user.referrer_id != -1:
             referrer_user = await User.find_one({"user_id": referrer_id})
-            current_user.referrer_id = referrer_user.user_id
-            await current_user.commit()
-    except (OverflowError, ValueError, AttributeError):
-        pass
+            if current_user_id != referrer_id:
+                current_user.referrer_id = referrer_user.user_id
+                await current_user.commit()
+                referrer_user.money += FRIEND_INVITATION_AWARD_MONEY_AMOUNT
+                referrer_user.commit()
+                return
+    finally:
+        current_user.referrer_id = -1
+        await current_user.commit()
 
 
 async def cmd_start(message: types.Message):
