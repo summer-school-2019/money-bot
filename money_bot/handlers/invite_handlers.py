@@ -1,8 +1,7 @@
 from aiogram import Bot, Dispatcher, types
 
-from money_bot.utils import models
+from money_bot.utils import models, strings
 from money_bot.utils.states import GlobalStates
-from money_bot.utils import strings
 
 
 async def entry_point(message: types.Message):
