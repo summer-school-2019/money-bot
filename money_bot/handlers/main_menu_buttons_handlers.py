@@ -1,6 +1,6 @@
 from aiogram import Dispatcher, types
 
-from money_bot.handlers import earn_handlers, balance_handlers
+from money_bot.handlers import balance_handlers, earn_handlers
 from money_bot.utils import states
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
