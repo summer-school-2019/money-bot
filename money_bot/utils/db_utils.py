@@ -2,7 +2,7 @@ from money_bot.utils import models
 
 
 async def is_user_in_db(user_id: int):
-    return bool(await get_user_by_id(user_id))
+    return await get_user_by_id(user_id) is None
 
 
 async def set_referrer_id(user_id: int, referrer_id: int):

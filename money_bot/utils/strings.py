@@ -25,4 +25,4 @@ EARN_MENU_TEXT = {
     "no_tasks": "Задания для вас закончились, попробуйте позже",
 }
 
-EARN_MENU_BUTTONS_LABELS = {}
+INVITE_BUTTON_STRING = "https://t.me/{}?start=referrer_id_{}"

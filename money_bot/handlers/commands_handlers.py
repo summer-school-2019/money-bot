@@ -2,8 +2,12 @@ import re
 
 from aiogram import Dispatcher, types
 
-from money_bot.example_config import INVITE_REWARD_MONEY_AMOUNT
 from money_bot.utils import db_utils, markups
+
+try:
+    from money_bot import local_config as config
+except ImportError:
+    from money_bot import example_config as config
 
 
 def get_referrer_id(message_text: str):
@@ -16,7 +20,7 @@ async def process_setting_referrer_id(user_id: int, referrer_id: int):
         current_user = await db_utils.get_user_by_id(user_id)
         if await db_utils.is_user_in_db(referrer_id):
             if not current_user.referrer_id:
-                await db_utils.increase_money_amount(referrer_id, INVITE_REWARD_MONEY_AMOUNT)
+                await db_utils.increase_money_amount(referrer_id, config.INVITE_REWARD_MONEY_AMOUNT)
                 await db_utils.set_referrer_id(user_id, referrer_id)
                 return
     await db_utils.set_referrer_id(user_id, -1)
