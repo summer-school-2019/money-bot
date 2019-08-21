@@ -6,7 +6,6 @@ from money_bot.utils.strings import EARN_MENU_TEXT, config
 
 
 async def entry_point(message: types.Message, new=False, last_message=None, user_id=None):
-    bot = Bot.get_current()
     """
 
     :param message:
@@ -15,6 +14,7 @@ async def entry_point(message: types.Message, new=False, last_message=None, user
     :param user_id:
     :return:
     """
+    bot = Bot.get_current()
     if user_id is None:
         user_id = types.User.get_current().id
     user = await db_utils.get_user_by_id(user_id)
@@ -80,6 +80,6 @@ async def check_task(query: types.CallbackQuery, callback_data: dict):
         await entry_point(query.message, last_message=query.message.message_id, user_id=query.message.chat.id)
 
 
-def register_all_handlers(dp: Dispatcher):
+def register_handlers(dp: Dispatcher):
     dp.register_message_handler(entry_point, state=GlobalStates.earn_menu)
     dp.register_callback_query_handler(check_task, markups.earn_factory.filter(), state=GlobalStates.earn_menu)
