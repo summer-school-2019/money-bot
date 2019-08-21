@@ -17,6 +17,7 @@ async def update_user(user_id, **kwargs):
 
 
 class UpdateUserMiddleware(BaseMiddleware):
+
     async def on_pre_process_message(self, message: types.Message, data: dict):
         await update_user(
             user_id=message.chat.id,

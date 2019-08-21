@@ -1,4 +1,5 @@
 from aiogram import Bot, Dispatcher, types
+from aiogram.utils.exceptions import ChatNotFound, ChatAdminRequired
 
 from money_bot.utils import db_utils, markups
 from money_bot.utils.states import GlobalStates
@@ -49,20 +50,30 @@ async def check_task(query: types.CallbackQuery, callback_data: dict):
     task = await db_utils.get_current_task(query.from_user.id)
     user = await db_utils.get_user_by_id(query.from_user.id)
     if callback_data["skip"] == "0":
-        chat_member = await bot.get_chat_member(task.chat_id, user.user_id)
-        if chat_member is not None and chat_member.is_chat_member():
-            await db_utils.increase_money_amount(user.user_id, config.MONEY_FOR_GROUP)
+        try:
+            chat_member = await bot.get_chat_member(task.chat_id, user.user_id)
+            if chat_member is not None and chat_member.is_chat_member():
+                await db_utils.increase_money_amount(user.user_id, config.MONEY_FOR_GROUP)
+                user.current_task_id += 1
+                await user.commit()
+                await bot.edit_message_text(
+                    EARN_MENU_TEXT["group_check_success"],
+                    query.message.chat.id,
+                    query.message.message_id,
+                    reply_markup=markups.get_next_task_markup(),
+                )
+            else:
+                await bot.edit_message_text(
+                    EARN_MENU_TEXT["group_check_failed"],
+                    query.message.chat.id,
+                    query.message.message_id,
+                    reply_markup=markups.get_next_task_markup(),
+                )
+        except (ChatNotFound, ChatAdminRequired):
             user.current_task_id += 1
             await user.commit()
             await bot.edit_message_text(
-                EARN_MENU_TEXT["group_check_success"],
-                query.message.chat.id,
-                query.message.message_id,
-                reply_markup=markups.get_next_task_markup(),
-            )
-        else:
-            await bot.edit_message_text(
-                EARN_MENU_TEXT["group_check_failed"],
+                EARN_MENU_TEXT["bad_group"],
                 query.message.chat.id,
                 query.message.message_id,
                 reply_markup=markups.get_next_task_markup(),
