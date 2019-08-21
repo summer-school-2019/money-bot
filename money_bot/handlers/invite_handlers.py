@@ -11,5 +11,5 @@ async def entry_point(message: types.Message):
     await message.answer(referral_link)
 
 
-def register_all_handlers(dp: Dispatcher):
+def register_handlers(dp: Dispatcher):
     dp.register_message_handler(entry_point, state=GlobalStates.invite_btn)

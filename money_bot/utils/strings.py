@@ -16,10 +16,10 @@ MAIN_MENU_BUTTONS_LABELS = {
 
 # EARN MODULE STRINGS
 EARN_MENU_TEXT = {
-    "new_task": "Подпишись на группу {channel_name} и заработай " + str(config.MONEY_FOR_GROUP) + " монет!",
-    "group_check_success": f"""Вам начислено {config.MONEY_FOR_GROUP} руб за успешно выполненое задание!
-Если в течении 5-ти дней Вы отпишитесь от группы - бот проверит и оштрафует Вас на {config.MONEY_FOR_GROUP} руб
-""",
+    "new_task": "Подпишись на группу {channel_name} и заработай " + str(config.JOIN_GROUP_REWARD) + " монет!",
+    "group_check_success": f"Вам начислено {config.JOIN_GROUP_REWARD} руб за успешно выполненое задание!\nЕсли в "
+    f"течении 5-ти дней Вы отпишитесь от группы - бот проверит и оштрафует Вас на "
+    f"{config.JOIN_GROUP_REWARD} руб",
     "group_check_failed": "Вы не подписаны на группу",
     "task_cancelled": "✖️ задание удалено",
     "no_tasks": "Задания для вас закончились, попробуйте позже",
