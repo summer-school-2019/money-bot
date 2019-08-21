@@ -8,3 +8,9 @@ class GlobalStates(StatesGroup):
     invite_btn = State()
     withdrawal_btn = State()
     rules_btn = State()
+    add_tasks_btn = State()
+
+
+class AddTasksStates(StatesGroup):
+    enter_group_id = State()
+    check_for_admin = State()
