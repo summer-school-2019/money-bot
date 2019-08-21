@@ -1,4 +1,10 @@
-from money_bot.handlers import commands_handlers, main_menu_buttons_handlers, earn_handlers, invite_handlers, balance_handlers
+from money_bot.handlers import (
+    balance_handlers,
+    commands_handlers,
+    earn_handlers,
+    invite_handlers,
+    main_menu_buttons_handlers,
+)
 
 
 def register_all_handlers(dp):
