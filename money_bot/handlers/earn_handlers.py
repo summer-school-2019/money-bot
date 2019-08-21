@@ -31,12 +31,12 @@ async def entry_point(message: types.Message, new=False, last_message=None, user
     if last_message is None:
         await bot.send_message(
             message.chat.id,
-            EARN_MENU_TEXT["new_task"].format(task.channel_name),
+            EARN_MENU_TEXT["new_task"].format(channel_name=task.channel_name),
             reply_markup=markups.get_earn_markup(task),
         )
     else:
         await bot.edit_message_text(
-            EARN_MENU_TEXT["new_task"].format(task.channel_name),
+            EARN_MENU_TEXT["new_task"].format(channel_name=task.channel_name),
             message.chat.id,
             last_message,
             reply_markup=markups.get_earn_markup(task),
