@@ -1,4 +1,3 @@
-# This is the bot for any markups
 from aiogram import types
 from aiogram.utils.callback_data import CallbackData
 
