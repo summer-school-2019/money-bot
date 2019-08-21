@@ -1,6 +1,22 @@
 from money_bot.utils import models
 
 
+async def is_user_in_db(user_id: int):
+    return await get_user_by_id(user_id) is None
+
+
+async def set_referrer_id(user_id: int, referrer_id: int):
+    user = await get_user_by_id(user_id)
+    user.referrer_id = referrer_id
+    await user.commit()
+
+
+async def increase_money_amount(user_id: int, increase_value_amount: int):
+    user = await get_user_by_id(user_id)
+    user.money += increase_value_amount
+    await user.commit()
+
+
 async def get_user_by_id(user_id: int):
     return await models.User.find_one({"user_id": user_id})
 

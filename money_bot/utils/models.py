@@ -23,6 +23,7 @@ class User(Document):
     last_name = fields.StringField(allow_none=True)
     username = fields.StringField(allow_none=True)
     current_task_id = fields.IntegerField(default=-1)
+    referrer_id = fields.IntegerField()
 
 
 @instance.register
