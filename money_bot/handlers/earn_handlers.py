@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils.exceptions import ChatNotFound, ChatAdminRequired
+from aiogram.utils.exceptions import ChatAdminRequired, ChatNotFound
 
 from money_bot.utils import db_utils, markups
 from money_bot.utils.states import GlobalStates
