@@ -30,3 +30,6 @@ BALANCE_MENU_TEXT = {
     "balance_info": """💰 На вашем балансе: {} руб.
 📢 Вы пригласили: {}."""
 }
+
+# INVITE MENU STRINGS
+INVITE_BUTTON_STRING = "https://t.me/{}?start=referrer_id_{}"
