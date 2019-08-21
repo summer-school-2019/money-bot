@@ -16,7 +16,7 @@ MAIN_MENU_BUTTONS_LABELS = {
 
 # EARN MENU STRINGS
 EARN_MENU_TEXT = {
-    "new_task": "Подпишись на группу {} и заработай " + str(config.MONEY_FOR_GROUP) + " монет!",
+    "new_task": "Подпишись на группу {channel_name} и заработай " + str(config.MONEY_FOR_GROUP) + " монет!",
     "group_check_success": f"""Вам начислено {config.MONEY_FOR_GROUP} руб за успешно выполненое задание!
 Если в течении 5-ти дней Вы отпишитесь от группы - бот проверит и оштрафует Вас на {config.MONEY_FOR_GROUP} руб
 """,
@@ -25,5 +25,11 @@ EARN_MENU_TEXT = {
     "no_tasks": "Задания для вас закончились, попробуйте позже",
 }
 
-# bot_name, referrer_id
-INVITE_BUTTON_STRING = "https://t.me/{}?start=referrer_id_{}"
+# BALANCE MENU STRINGS
+BALANCE_MENU_TEXT = {
+    "balance_info": """💰 На вашем балансе: {money} руб.
+📢 Вы пригласили: {invited_count}."""
+}
+
+# INVITE MENU STRINGS
+INVITE_BUTTON_STRING = "https://t.me/{bot_name}?start=referrer_id_{user_id}"
