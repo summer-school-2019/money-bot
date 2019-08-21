@@ -2,9 +2,10 @@ from money_bot.handlers import (
     balance_handlers,
     commands_handlers,
     earn_handlers,
+    game_handlers,
     invite_handlers,
     main_menu_buttons_handlers,
-    game_handlers)
+)
 
 
 def register_all_handlers(dp):
