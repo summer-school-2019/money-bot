@@ -25,4 +25,5 @@ EARN_MENU_TEXT = {
     "no_tasks": "Задания для вас закончились, попробуйте позже",
 }
 
+# bot_name, referrer_id
 INVITE_BUTTON_STRING = "https://t.me/{}?start=referrer_id_{}"
