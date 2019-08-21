@@ -98,7 +98,7 @@ async def callback_results(query: types.CallbackQuery, state: FSMContext, callba
 
 
 async def check_bitcoin(query: types.CallbackQuery, callback_data: dict, state: FSMContext):
-    user = await db_utils.get_user_by_id(query.message.chat.id)
+    user = await db_utils.get_user_by_id(query.message.chat.id)  # very useful comment
     bot = Bot.get_current()
     async with state.proxy() as storage:
         number = random.randint(0, 20)
