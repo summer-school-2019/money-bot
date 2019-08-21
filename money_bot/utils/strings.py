@@ -63,5 +63,6 @@ GAME_MENU_TEXT = {
     "show_bet": "\U0001F4B8 you have {money} money and your bet is {bet} money \U0001F4B8",
     "rules": "Bitcoin rate is changing every second!\nSolve how it will change and win coins!\n" 
              "You can't bet more money than yot have.",
-    "show_money": "\U0001F4B8 You have {money} money now! \U0001F4B8"
+    "show_money": "\U0001F4B8 You have {money} money now! \U0001F4B8",
+    "no_money_to_start": f"Необходимо как минимум {config.MONEY_TO_START_GAME} руб. чтобы начать игру"
 }

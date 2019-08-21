@@ -1,4 +1,5 @@
 from aiogram import Dispatcher, types
+from aiogram.dispatcher import FSMContext
 
 from money_bot.handlers import balance_handlers, earn_handlers, invite_handlers, rules_handlers, game_handlers
 from money_bot.utils import states
@@ -10,9 +11,9 @@ async def process_earn_btn(message: types.Message):
     await earn_handlers.entry_point(message)
 
 
-async def process_play_btn(message: types.Message):
+async def process_play_btn(message: types.Message, state: FSMContext):
     await states.GlobalStates.play_btn.set()
-    await game_handlers.entry_point(message)
+    await game_handlers.entry_point(message, state)
 
 
 async def process_balance_btn(message: types.Message):
