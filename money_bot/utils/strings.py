@@ -4,6 +4,14 @@ except ImportError:
     from money_bot import example_config as config
 
 
+# START COMMAND MODULE STRINGS
+START_COMMAND_TEXT = (
+    "Для заработка по партнерской программе вам нужно пригласить {required_referees_amount} "
+    "пользователей.\nВы пригласили пользователей: {user_referee_amount}.\nВаша ссылка для "
+    "приглашения: {invite_link}\n\nВНИМАНИЕ!!! Бот полностью БЕСПЛАТНЫЙ и не требует никаких "
+    "платежей!"
+)
+
 # MAIN MENU MODULE STRINGS
 MAIN_MENU_BUTTONS_LABELS = {
     "earn": "🤑 Заработать",
