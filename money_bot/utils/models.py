@@ -24,7 +24,6 @@ class User(Document):
     username = fields.StringField(allow_none=True)
     referrer_id = fields.IntegerField()
     current_task_id = fields.IntegerField(default=-1)
-    referrer_id = fields.IntegerField()
 
 
 @instance.register
