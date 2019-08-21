@@ -49,5 +49,4 @@ async def get_next_task(user_id: int):
 
 
 async def get_user_referees_amount(user_id: int):
-    users = await models.User.find_one({"referrer_id": user_id})
-    return len(users) if users else 0
+    return await models.db.user.count_documents({"referrer_id": user_id})
