@@ -17,6 +17,11 @@ async def increase_money_amount(user_id: int, increase_value_amount: int):
     await user.commit()
 
 
+async def get_user_money_amount(user_id: int):
+    user = await get_user_by_id(user_id)
+    return user.money
+
+
 async def get_user_by_id(user_id: int):
     return await models.User.find_one({"user_id": user_id})
 
@@ -41,3 +46,8 @@ async def get_next_task(user_id: int):
     user.current_task_id += 1
     await user.commit()
     return tasks[user.current_task_id]
+
+
+async def get_user_referees_amount(user_id: int):
+    users = await models.User.find_one({"referrer_id": user_id})
+    return len(users) if users else 0

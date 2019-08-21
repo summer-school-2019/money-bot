@@ -1,37 +1,38 @@
 from aiogram import Dispatcher, types
 
-from money_bot.handlers import earn_handlers, invite_handlers
+from money_bot.handlers import earn_handlers, invite_handlers, rules_handlers
 from money_bot.utils import states
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
 
 
 async def process_earn_btn(message: types.Message):
-    await states.GlobalStates.earn_menu.set()
+    await states.GlobalStates.earn_btn.set()
     await earn_handlers.entry_point(message)
 
 
 async def process_play_btn(message: types.Message):
-    await states.GlobalStates.play_menu.set()
+    await states.GlobalStates.play_btn.set()
     await message.answer(f'"{message.text}" clicked')
 
 
 async def process_balance_btn(message: types.Message):
-    await states.GlobalStates.balance_menu.set()
+    await states.GlobalStates.balance_btn.set()
     await message.answer(f'"{message.text}" clicked')
 
 
 async def process_invite_btn(message: types.Message):
-    await states.GlobalStates.invite_menu.set()
+    await states.GlobalStates.invite_btn.set()
     await invite_handlers.entry_point(message)
 
 
 async def process_withdrawal_btn(message: types.Message):
+    await states.GlobalStates.withdrawal_btn.set()
     await message.answer(f'"{message.text}" clicked')
 
 
 async def process_rules_btn(message: types.Message):
-    await states.GlobalStates.rules_menu.set()
-    await message.answer(f'"{message.text}" clicked')
+    await states.GlobalStates.rules_btn.set()
+    await rules_handlers.entry_point(message)
 
 
 def register_handlers(handler_dp: Dispatcher):

@@ -51,7 +51,7 @@ async def check_task(query: types.CallbackQuery, callback_data: dict):
     if callback_data["skip"] == "0":
         chat_member = await bot.get_chat_member(task.chat_id, user.user_id)
         if chat_member is not None and chat_member.is_chat_member():
-            await db_utils.increase_money_amount(user.user_id, config.MONEY_FOR_GROUP)
+            await db_utils.increase_money_amount(user.user_id, config.JOIN_GROUP_REWARD)
             user.current_task_id += 1
             await user.commit()
             await bot.edit_message_text(
@@ -81,5 +81,5 @@ async def check_task(query: types.CallbackQuery, callback_data: dict):
 
 
 def register_all_handlers(dp: Dispatcher):
-    dp.register_message_handler(entry_point, state=GlobalStates.earn_menu)
-    dp.register_callback_query_handler(check_task, markups.earn_factory.filter(), state=GlobalStates.earn_menu)
+    dp.register_message_handler(entry_point, state=GlobalStates.earn_btn)
+    dp.register_callback_query_handler(check_task, markups.earn_factory.filter(), state=GlobalStates.earn_btn)
