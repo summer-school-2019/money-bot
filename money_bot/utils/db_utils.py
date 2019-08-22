@@ -1,4 +1,9 @@
-from money_bot.utils import models
+from money_bot.utils import models, strings
+
+try:
+    from money_bot import local_config as config
+except ImportError:
+    from money_bot import example_config as config
 
 
 async def get_user_by_id(user_id: int):
@@ -6,7 +11,7 @@ async def get_user_by_id(user_id: int):
 
 
 async def is_user_in_db(user_id: int):
-    return await get_user_by_id(user_id) is None
+    return bool(await get_user_by_id(user_id))
 
 
 async def set_referrer_id(user_id: int, referrer_id: int):
@@ -28,6 +33,12 @@ async def get_user_money_amount(user_id: int):
 
 async def get_user_referees_amount(user_id: int):
     return await models.db.user.count_documents({"referrer_id": user_id})
+
+
+async def get_user_verify_status(user_id: int):
+    if await get_user_referees_amount(user_id) >= config.REFEREES_TO_ENABLE_WITHDRAWAL:
+        return strings.VERIFIED_TRUE_LABEL
+    return strings.VERIFIED_FALSE_LABEL
 
 
 async def get_current_task(user_id: int):

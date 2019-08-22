@@ -8,3 +8,8 @@ class GlobalStates(StatesGroup):
     invite_btn = State()
     withdrawal_btn = State()
     rules_btn = State()
+
+
+class WithdrawalStates(StatesGroup):
+    phone_number = State()
+    money_amount = State()
