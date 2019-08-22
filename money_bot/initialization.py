@@ -7,7 +7,7 @@ from money_bot.utils import register_all_handlers, update_middleware
 
 
 async def on_startup(dp):
-	await bot.delete_webhook()
+    await bot.delete_webhook()
     await bot.set_webhook(config.WEBHOOK_URL)
 
 

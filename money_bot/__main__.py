@@ -11,5 +11,5 @@ except ImportError:
 
 if __name__ == "__main__":
     executor.start_webhook(
-        dp, on_startup=on_startup, webhook_path=config.WEBHOOK_PATH, host=config.WEBHOOK_HOST, port=config.WEBHOOK_PORT
+        dp, on_startup=on_startup, webhook_path=config.WEBHOOK_PATH, host=config.SERVER_HOST, port=config.WEBHOOK_PORT
     )
