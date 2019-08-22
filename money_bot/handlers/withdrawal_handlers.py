@@ -2,10 +2,9 @@ import re
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.dispatcher import FSMContext
-
 from aioqiwi import Wallet
 
-from money_bot.utils import db_utils, strings, states
+from money_bot.utils import db_utils, states, strings
 
 try:
     from money_bot import local_config as config
@@ -40,8 +39,7 @@ async def withdraw_money(phone_number, money_amount, message):
     await make_transaction(phone_number, money_amount)
     await message.answer(
         strings.SUCCESSFUL_WITHDRAWAL_COMPLETE.format(
-            money_amount=money_amount,
-            user_money_amount=await db_utils.get_user_money_amount(message.from_user.id),
+            money_amount=money_amount, user_money_amount=await db_utils.get_user_money_amount(message.from_user.id)
         )
     )
 
@@ -56,17 +54,17 @@ async def entry_point(message: types.Message):
     )
     if await db_utils.get_user_referees_amount(message.from_user.id) < config.REFEREES_TO_ENABLE_WITHDRAWAL:
         await message.answer(
-            withdrawal_text +
-            strings.WITHDRAWAL_REFEREES_AMOUNT_PROBLEM_TEXT.format(
+            withdrawal_text
+            + strings.WITHDRAWAL_REFEREES_AMOUNT_PROBLEM_TEXT.format(
                 required_referees_amount=config.REFEREES_TO_ENABLE_WITHDRAWAL,
                 referral_link=strings.INVITE_LINK.format(bot_name=bot.username, referrer_id=message.from_user.id),
             )
         )
     elif await db_utils.get_user_money_amount(message.from_user.id) < config.MONEY_AMOUNT_TO_ENABLE_WITHDRAWAL:
         await message.answer(
-            withdrawal_text +
-            strings.WITHDRAWAL_MONEY_AMOUNT_PROBLEM_TEXT.format(
-                required_money_amount=config.MONEY_AMOUNT_TO_ENABLE_WITHDRAWAL,
+            withdrawal_text
+            + strings.WITHDRAWAL_MONEY_AMOUNT_PROBLEM_TEXT.format(
+                required_money_amount=config.MONEY_AMOUNT_TO_ENABLE_WITHDRAWAL
             )
         )
     else:

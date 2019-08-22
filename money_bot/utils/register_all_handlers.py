@@ -4,7 +4,7 @@ from money_bot.handlers import (
     earn_handlers,
     invite_handlers,
     main_menu_buttons_handlers,
-    withdrawal_handlers
+    withdrawal_handlers,
 )
 
 
