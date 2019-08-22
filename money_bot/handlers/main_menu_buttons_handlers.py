@@ -7,6 +7,7 @@ from money_bot.handlers import (
     game_handlers,
     invite_handlers,
     rules_handlers,
+    withdrawal_handlers,
 )
 from money_bot.utils import states
 from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS
