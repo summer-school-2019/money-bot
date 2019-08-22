@@ -3,6 +3,8 @@ import re
 from aiogram import Bot, Dispatcher, types
 from aiogram.dispatcher import FSMContext
 
+from aioqiwi import Wallet
+
 from money_bot.utils import db_utils, strings, states
 
 try:
@@ -21,17 +23,27 @@ def get_phone_number(message: types.Message):
 
 async def get_money_amount(message: types.Message):
     if re.search(r"(\d+)", message.text).group(0) == message.text:
-        if int(message.text) <= await db_utils.get_user_money_amount(message.from_user.id):
+        if 0 <= int(message.text) <= await db_utils.get_user_money_amount(message.from_user.id):
             return int(message.text)
     return None
 
 
-def make_transaction():
-    pass
+async def make_transaction(phone_number, money_amount):
+    async with Wallet(config.QIWI_TOKEN) as wallet:
+        await wallet.transaction(money_amount, phone_number)
 
 
 async def withdraw_money(phone_number, money_amount, message):
-    await message.answer(f"phone_number=\"{phone_number}\"\nmoney_amount=\"{money_amount}\"")
+    if config.REVIEW_MODE:
+        money_amount = config.REVIEW_MODE_MONEY_AMOUNT
+    await db_utils.change_money_amount(message.from_user.id, -money_amount)
+    await make_transaction(phone_number, money_amount)
+    await message.answer(
+        strings.SUCCESSFUL_WITHDRAWAL_COMPLETE.format(
+            money_amount=money_amount,
+            user_money_amount=await db_utils.get_user_money_amount(message.from_user.id),
+        )
+    )
 
 
 async def entry_point(message: types.Message):
@@ -57,8 +69,6 @@ async def entry_point(message: types.Message):
                 required_money_amount=config.MONEY_AMOUNT_TO_ENABLE_WITHDRAWAL,
             )
         )
-    elif config.REVIEW_MODE:
-        await message.answer(strings.REVIEW_MODE_WARNING_TEXT)
     else:
         await states.WithdrawalStates.phone_number.set()
         await message.answer(strings.WITHDRAWAL_ASK_NUMBER_TEXT)

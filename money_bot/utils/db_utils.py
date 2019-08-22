@@ -20,9 +20,9 @@ async def set_referrer_id(user_id: int, referrer_id: int):
     await user.commit()
 
 
-async def increase_money_amount(user_id: int, increase_value_amount: int):
+async def change_money_amount(user_id: int, value: int):
     user = await get_user_by_id(user_id)
-    user.money += increase_value_amount
+    user.money += value
     await user.commit()
 
 

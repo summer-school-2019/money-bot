@@ -79,7 +79,10 @@ RULES_BUTTON_TEXT = (
 )
 
 # REVIEW MODE MODULE STRINGS
-REVIEW_MODE_WARNING_TEXT = "Данный функционал недоступен в режиме презентации."
+SUCCESSFUL_WITHDRAWAL_COMPLETE = "Платёж произошёл успешно! Вы вывели {money_amount} руб.\nВаш текущий баланс: {" \
+                                 "user_money_amount} руб."
+REVIEW_MODE_WARNING_TEXT = f"В режиме презентации максимальная сумма вывода составляет - " \
+                           f"{config.REVIEW_MODE_MONEY_AMOUNT} руб. "
 
 # VERIFY MODE
 VERIFIED_TRUE_LABEL = "Верифицирован"
