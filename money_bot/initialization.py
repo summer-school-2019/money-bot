@@ -6,7 +6,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from money_bot.utils import register_all_handlers, update_middleware
 
 
-async def on_startup():
+async def on_startup(dp):
     await bot.set_webhook(config.WEBHOOK_URL)
 
 
