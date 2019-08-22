@@ -49,7 +49,7 @@ def bitcoin():
 def play_again():
     return types.InlineKeyboardMarkup().row(
         types.InlineKeyboardButton(
-            "\U0001F3B0 play again! \U0001F3B0", callback_data=change_sum.new(action="play_again", value="-")
+            "\U0001F3B0 Играть снова! \U0001F3B0", callback_data=change_sum.new(action="play_again", value="-")
         )
     )
 
@@ -59,7 +59,7 @@ async def entry_point(message: types.Message):
     user = await db_utils.get_user_by_id(message.from_user.id)
     await bot.send_message(
         message.chat.id,
-        f"\U0001F4B8       You have {user.money} money now!         \U0001F4B8",
+        f"\U0001F4B8       У вас есть {user.money} рублей!         \U0001F4B8",
         reply_markup=main_game_keyboard(),
     )
 
@@ -113,7 +113,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
                 await user.commit()
 
         await bot.edit_message_text(
-            f"\U0001F4B8 you have {user.money} money and your bet is {user.current_bet} money \U0001F4B8",
+            f"\U0001F4B8 У вас есть {user.money} рублей и ваша ставка {user.current_bet} рублей \U0001F4B8",
             query.message.chat.id,
             query.message.message_id,
             reply_markup=main_game_keyboard(),
@@ -122,15 +122,14 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
         await bot.send_message(
             query.message.chat.id,
-            "Bitcoin rate is changing every second!\nSolve how it will change and win coins!\nYou can't bet more "
-            "money than yot have.",
+            "Курс биткоина меняется каждую секунду!\nУгадай как он изменится и выиграй деньги!\nВы не можете поставить больше, чем у вас есть.",
             reply_markup=get_menu_button(),
         )
 
     if callback_data["action"] == "menu":
         await bot.send_message(
             query.message.chat.id,
-            f"\U0001F4B8 You have {user.money} money now! \U0001F4B8",
+            f"\U0001F4B8 У вас есть {user.money} рублей! \U0001F4B8",
             reply_markup=main_game_keyboard(),
         )
 
@@ -139,7 +138,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             number = random.randint(0, 20)
             if callback_data["action"] not in ["up", "down", "play_again"]:
                 await bot.edit_message_text(
-                    "Bitcoin will fall or grow?",
+                    "Биткоин вырастет или упадет?",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=bitcoin(),
@@ -147,7 +146,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             if callback_data["action"] == "up" and number > 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F601 You win {user.current_bet} money! \U0001F601",
+                    f"\U0001F601 Вы выиграли {user.current_bet} рублей! \U0001F601",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
@@ -160,7 +159,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             elif callback_data["action"] == "down" and number < 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F601 You win {user.current_bet} money! \U0001F601",
+                    f"\U0001F601 Вы выиграли {user.current_bet} рублей! \U0001F601",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
@@ -173,7 +172,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             elif callback_data["action"] == "down" and number > 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F614 You lose {user.current_bet} money! \U0001F614",
+                    f"\U0001F614 Вы потеряли {user.current_bet} рублей! \U0001F614",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
@@ -186,7 +185,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             elif callback_data["action"] == "up" and number < 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F614 You lose {user.current_bet} money! \U0001F614",
+                    f"\U0001F614 Вы проиграли {user.current_bet} рублей! \U0001F614",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
@@ -199,20 +198,20 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             if callback_data["action"] == "play_again":
                 if user.money < 1:
                     await bot.edit_message_text(
-                        "\U0001F915 Sorry! You have now money \U0001F915",
+                        "\U0001F915 У вас недостаточно денег \U0001F915",
                         query.message.chat.id,
                         query.message.message_id,
                     )
                 else:
                     await bot.edit_message_text(
-                        f"\U0001F4B8 You have {user.money} money now! \U0001F4B8",
+                        f"\U0001F4B8 У вас есть {user.money} рублей! \U0001F4B8",
                         query.message.chat.id,
                         query.message.message_id,
                         reply_markup=main_game_keyboard(),
                     )
         else:
             await bot.edit_message_text(
-                "\U000026D4	your bet is too big! \U000026D4",
+                "\U000026D4	Ваша ставка слишком большая! \U000026D4",
                 query.message.chat.id,
                 query.message.message_id,
                 reply_markup=main_game_keyboard(),
