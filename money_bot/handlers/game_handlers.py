@@ -128,7 +128,9 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
     if callback_data["action"] == "menu":
         await bot.send_message(
-            query.message.chat.id, f"\U0001F4B8 You have {user.money} money now! \U0001F4B8", reply_markup=main_game_keyboard()
+            query.message.chat.id,
+            f"\U0001F4B8 You have {user.money} money now! \U0001F4B8",
+            reply_markup=main_game_keyboard(),
         )
 
     if callback_data["action"] in ["play", "up", "down", "play_again"]:
