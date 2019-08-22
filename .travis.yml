@@ -1,6 +1,8 @@
 language: python
+cache: pip
 
 python: "3.7"
+
 install:
   - pip install -r requirements.txt
 
@@ -11,3 +13,15 @@ script:
 
 after_success:
   - pylint money_bot
+
+deploy:
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: $HEROKY_DEVELOP
+    on:
+      branch: develop
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: $HEROKY_PROD
+    on:
+      branch: master

@@ -12,6 +12,9 @@
 Создаем новый файл *local_config.py*, в него копируем все из *example_config.py*, меняем
 *local_config.py* 
 
+### Запуск
+Для запуска проекта выполните команду `python -m money_bot`
+
 ## Code check 
 Run from the root of the project
 1. ```black money_bot```. Чек код стайла
@@ -30,12 +33,13 @@ Run from the root of the project
 5. Делаем Pull request на гитхабе. Мержим из вашей ветки в develop
 
 ## Downloading on local pc:
-1. `git clone git@github.com:summer-school-2019/money-bot.git`
-2. `python3.7 -m virtualenv .venv` Создаем новое окружние. Возможно, у вас на пк нужно заменить на
+1. `git clone https://github.com/summer-school-2019/money-bot.git`
+2. `python3.7 -m virtualenv .venv` Создаем новое окружение. Возможно, у вас на пк нужно заменить на
 `python3 -m virtualenv .venv`
 3. `source .venv/bin/activate` - *nix
    `.venv/bin/activate.exe` - windows (но это не точно)
- 
+4. `pip install -r requirements.txt`
+
 ## Prerequirements
 
 ### Black
