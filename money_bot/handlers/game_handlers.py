@@ -1,14 +1,12 @@
 import random
 
-from aiogram import Bot, Dispatcher, executor, types
+from aiogram import Bot, Dispatcher, types
 from aiogram.utils.callback_data import CallbackData
 
 from money_bot.utils import db_utils
 from money_bot.utils.states import GlobalStates
 
 change_sum = CallbackData("sum", "action", "value")
-b = 0
-a = 0
 
 
 def main_game_keyboard():
@@ -58,55 +56,64 @@ def play_again():
 
 async def entry_point(message: types.Message):
     bot = Bot.get_current()
-    global a
-    a = (await db_utils.get_user_by_id(message.from_user.id)).money
+    user = await db_utils.get_user_by_id(message.from_user.id)
     await bot.send_message(
         message.chat.id,
-        f"\U0001F4B8       You have {a} money now!         \U0001F4B8",
+        f"\U0001F4B8       You have {user.money} money now!         \U0001F4B8",
         reply_markup=main_game_keyboard(),
     )
 
 
 async def callback_results(query: types.CallbackQuery, callback_data: dict):
     bot = Bot.get_current()
-    global b, a
+    user = await db_utils.get_user_by_id(query.message.chat.id)
     await query.answer()
 
     if callback_data["action"] in ["make", "plus", "minus", "show_current_sum"]:
 
         if callback_data["action"] == "make" and callback_data["value"] == "1":
-            b = 1
+            user.current_bet = 1
+            await user.commit()
 
         if callback_data["action"] == "make" and callback_data["value"] == "10":
-            b = 10
+            user.current_bet = 10
+            await user.commit()
 
         if callback_data["action"] == "make" and callback_data["value"] == "50":
-            b = 50
+            user.current_bet = 50
+            await user.commit()
 
         if callback_data["action"] == "make" and callback_data["value"] == "100":
-            b = 100
+            user.current_bet = 100
+            await user.commit()
 
         if callback_data["action"] == "make" and callback_data["value"] == "1000":
-            b = 1000
+            user.current_bet = 1000
+            await user.commit()
 
         if callback_data["action"] == "plus" and callback_data["value"] == "1":
-            b += 1
+            user.current_bet += 1
+            await user.commit()
 
         if callback_data["action"] == "plus" and callback_data["value"] == "5":
-            b += 5
+            user.current_bet += 5
+            await user.commit()
 
         if callback_data["action"] == "minus" and callback_data["value"] == "1":
-            if b >= 1:
-                b -= 1
+            if user.current_bet >= 1:
+                user.current_bet -= 1
+                await user.commit()
 
         if callback_data["action"] == "minus" and callback_data["value"] == "5":
-            if b >= 5:
-                b -= 5
+            if user.current_bet >= 5:
+                user.current_bet -= 5
+                await user.commit()
             else:
-                b = 0
+                user.current_bet = 0
+                await user.commit()
 
         await bot.edit_message_text(
-            f"\U0001F4B8 you have {a} money and your bet is {b} money \U0001F4B8",
+            f"\U0001F4B8 you have {user.money} money and your bet is {user.current_bet} money \U0001F4B8",
             query.message.chat.id,
             query.message.message_id,
             reply_markup=main_game_keyboard(),
@@ -121,11 +128,11 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
     if callback_data["action"] == "menu":
         await bot.send_message(
-            query.message.chat.id, f"\U0001F4B8 You have {a} money now! \U0001F4B8", reply_markup=main_game_keyboard()
+            query.message.chat.id, f"\U0001F4B8 You have {user.money} money now! \U0001F4B8", reply_markup=main_game_keyboard()
         )
 
     if callback_data["action"] in ["play", "up", "down", "play_again"]:
-        if a >= b:
+        if user.money >= user.current_bet:
             number = random.randint(0, 20)
             if callback_data["action"] not in ["up", "down", "play_again"]:
                 await bot.edit_message_text(
@@ -137,53 +144,57 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
             if callback_data["action"] == "up" and number > 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F601 You win {b} money! \U0001F601",
+                    f"\U0001F601 You win {user.current_bet} money! \U0001F601",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
                 )
 
-                a += b
-                await db_utils.increase_money_amount(query.from_user.id, b)
+                user.money += user.current_bet
+                await user.commit()
+                await db_utils.increase_money_amount(query.from_user.id, user.current_bet)
 
             elif callback_data["action"] == "down" and number < 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F601 You win {b} money! \U0001F601",
+                    f"\U0001F601 You win {user.current_bet} money! \U0001F601",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
                 )
 
-                a += b
-                await db_utils.increase_money_amount(query.from_user.id, b)
+                user.money += user.current_bet
+                await user.commit()
+                await db_utils.increase_money_amount(query.from_user.id, user.current_bet)
 
             elif callback_data["action"] == "down" and number > 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F614 You lose {b} money! \U0001F614",
+                    f"\U0001F614 You lose {user.current_bet} money! \U0001F614",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
                 )
 
-                a -= b
-                await db_utils.increase_money_amount(query.from_user.id, -b)
+                user.money -= user.current_bet
+                await user.commit()
+                await db_utils.increase_money_amount(query.from_user.id, -user.current_bet)
 
             elif callback_data["action"] == "up" and number < 5:
 
                 await bot.edit_message_text(
-                    f"\U0001F614 You lose {b} money! \U0001F614",
+                    f"\U0001F614 You lose {user.current_bet} money! \U0001F614",
                     query.message.chat.id,
                     query.message.message_id,
                     reply_markup=play_again(),
                 )
 
-                a -= b
-                await db_utils.increase_money_amount(query.from_user.id, -b)
+                user.money -= user.current_bet
+                await user.commit()
+                await db_utils.increase_money_amount(query.from_user.id, -user.current_bet)
 
             if callback_data["action"] == "play_again":
-                if a < 1:
+                if user.money < 1:
                     await bot.edit_message_text(
                         "\U0001F915 Sorry! You have now money \U0001F915",
                         query.message.chat.id,
@@ -191,7 +202,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
                     )
                 else:
                     await bot.edit_message_text(
-                        f"\U0001F4B8 You have {a} money now! \U0001F4B8",
+                        f"\U0001F4B8 You have {user.money} money now! \U0001F4B8",
                         query.message.chat.id,
                         query.message.message_id,
                         reply_markup=main_game_keyboard(),
