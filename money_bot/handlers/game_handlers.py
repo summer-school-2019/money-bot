@@ -154,7 +154,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
                 user.money += user.current_bet
                 await user.commit()
-                await db_utils.increase_money_amount(query.from_user.id, user.current_bet)
+                await db_utils.change_money_amount(query.from_user.id, user.current_bet)
 
             elif callback_data["action"] == "down" and number < 5:
 
@@ -167,7 +167,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
                 user.money += user.current_bet
                 await user.commit()
-                await db_utils.increase_money_amount(query.from_user.id, user.current_bet)
+                await db_utils.change_money_amount(query.from_user.id, user.current_bet)
 
             elif callback_data["action"] == "down" and number > 5:
 
@@ -180,7 +180,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
                 user.money -= user.current_bet
                 await user.commit()
-                await db_utils.increase_money_amount(query.from_user.id, -user.current_bet)
+                await db_utils.change_money_amount(query.from_user.id, -user.current_bet)
 
             elif callback_data["action"] == "up" and number < 5:
 
@@ -193,7 +193,7 @@ async def callback_results(query: types.CallbackQuery, callback_data: dict):
 
                 user.money -= user.current_bet
                 await user.commit()
-                await db_utils.increase_money_amount(query.from_user.id, -user.current_bet)
+                await db_utils.change_money_amount(query.from_user.id, -user.current_bet)
 
             if callback_data["action"] == "play_again":
                 if user.money < 1:
