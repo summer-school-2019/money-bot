@@ -1,5 +1,6 @@
 aiogram==2.3
 aiohttp==3.5.4
+aioqiwi==https://github.com/uwinx/aioqiwi/archive/master.zip
 appdirs==1.4.3
 astroid==2.2.5
 async-timeout==3.0.1
