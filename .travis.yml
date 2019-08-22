@@ -11,3 +11,8 @@ script:
 
 after_success:
   - pylint money_bot
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: $HEROKY_APP_NAME

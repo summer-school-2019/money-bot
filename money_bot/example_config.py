@@ -1,10 +1,12 @@
-BOT_TOKEN = ""
+import os
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 CLUSTER_NAME = ""
 DB_NAME = ""
 DB_USER_NAME = ""
 DB_USER_PASSWORD = ""
-DB_HOST = f"mongodb+srv://{DB_USER_NAME}:{DB_USER_PASSWORD}@{CLUSTER_NAME}/{DB_NAME}?retryWrites=true&w=majority"
+DB_HOST = os.getenv("MONGODB_HOST")
 
 JOIN_GROUP_REWARD = 1
 REFERRAL_REWARD = 2
