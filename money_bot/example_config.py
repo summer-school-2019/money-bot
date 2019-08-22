@@ -1,6 +1,13 @@
+import os
+
 # Example config file
 BOT_TOKEN = ""
 QIWI_TOKEN = ""
+
+WEBHOOK_HOST = os.getenv("WEBHOOK_HOST")
+WEBHOOK_PORT = os.getenv("PORT")
+WEBHOOK_PATH = f"/{BOT_TOKEN}"
+WEBHOOK_URL = WEBHOOK_HOST + WEBHOOK_PATH
 
 CLUSTER_NAME = ""
 DB_NAME = ""
