@@ -3,7 +3,6 @@ try:
 except ImportError:
     from money_bot import example_config as config
 
-
 # START COMMAND MODULE STRINGS
 START_COMMAND_TEXT = (
     "Для заработка по партнерской программе вам нужно пригласить {required_referees_amount} "
@@ -53,6 +52,33 @@ INVITE_BUTTON_TEXT = (
 )
 INVITE_LINK = "https://t.me/{bot_name}?start=referrer_id_{referrer_id}"
 
+# WITHDRAWAL MODULE STRINGS
+WITHDRAWAL_TEXT = (
+    "❗ Вывод через QIWI ❗\n💰 На вашем балансе: {user_money_amount} руб.\n📢 Вы пригласили: {"
+    "user_referee_amount}.\n📝 Минимальная сумма вывода: {money_amount_to_enable_withdrawal} руб.\nВаш "
+    "статус: {user_status}.\n\n"
+)
+
+WITHDRAWAL_REFEREES_AMOUNT_PROBLEM_TEXT = (
+    "Чтобы пройти верификацию и выводить в дальнейшем заработанные средства, "
+    "пригласите по своей партнерской ссылке минимум {required_referees_amount} "
+    "человек.\nВаша ссылка для приглашения: {referral_link}"
+)
+
+WITHDRAWAL_MONEY_AMOUNT_PROBLEM_TEXT = (
+    "Чтобы пройти верификацию и выводить в дальнейшем заработанные средства, "
+    "вы должны накопить минимум {required_money_amount} руб.\nВыполняйте "
+    "задания и приглашайте друзей, чтобы сделать это быстрее."
+)
+
+WITHDRAWAL_ASK_NUMBER_TEXT = 'Введите номер qiwi кошелька для вывода.\nПример - "+79089860283":'
+
+WITHDRAWAL_ASK_MONEY_AMOUNT_TEXT = 'Введите сумму, которую нужно вывести.\nПример - "100":'
+
+WITHDRAWAL_ASK_PHONE_NUMBER_ERROR_TEXT = "Введите корректный номер!"
+
+WITHDRAWAL_ASK_MONEY_AMOUNT_ERROR_TEXT = "Введите корректную сумму!"
+
 # RULES MODULE STRINGS
 RULES_MENU_TEXT = (
     "С помощью этого бота можно хорошо заработать! Выполняйте задания и зарабатывайте деньги!\n\nДля "
@@ -62,6 +88,18 @@ RULES_MENU_TEXT = (
     "приглашенного пользователя начисляется {referral_fee} руб.\nМинимум на вывод: "
     "{money_to_enable_withdrawal} руб.\nВаш текущий баланс: {user_money_amount} руб."
 )
+
+# REVIEW MODE MODULE STRINGS
+SUCCESSFUL_WITHDRAWAL_COMPLETE = (
+    "Платёж произошёл успешно! Вы вывели {money_amount} руб.\nВаш текущий баланс: {" "user_money_amount} руб."
+)
+REVIEW_MODE_WARNING_TEXT = (
+    f"В режиме презентации максимальная сумма вывода составляет - " f"{config.REVIEW_MODE_MONEY_AMOUNT} руб. "
+)
+
+# VERIFY MODE
+VERIFIED_TRUE_LABEL = "Верифицирован"
+VERIFIED_FALSE_LABEL = "Неверифицирован"
 
 # ADD TASKS MODULE STRINGS
 ADD_TASKS_MENU_TEXT = {

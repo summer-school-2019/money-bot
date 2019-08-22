@@ -11,6 +11,11 @@ class GlobalStates(StatesGroup):
     add_tasks_btn = State()
 
 
+class WithdrawalStates(StatesGroup):
+    phone_number = State()
+    money_amount = State()
+
+
 class AddTasksStates(StatesGroup):
     enter_group_id = State()
     check_for_admin = State()
