@@ -13,6 +13,13 @@ after_success:
   - pylint money_bot
 
 deploy:
-  provider: heroku
-  api_key: $HEROKU_API_KEY
-  app: $HEROKY_APP_NAME
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: $HEROKY_DEVELOP
+    on:
+      branch: develop
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: $HEROKY_APP_NAME
+    on:
+      branch: master
