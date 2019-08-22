@@ -14,7 +14,7 @@ async def entry_point(message: types.Message):
     user_referee_amount = await db_utils.get_user_referees_amount(message.from_user.id)
     user_money_amount = await db_utils.get_user_money_amount(message.from_user.id)
     await message.answer(
-        strings.RULES_BUTTON_TEXT.format(
+        strings.RULES_MENU_TEXT.format(
             required_referee_amount=config.REFEREES_TO_ENABLE_WITHDRAWAL,
             user_referee_amount=user_referee_amount,
             user_referral_link=strings.INVITE_LINK.format(bot_name=bot.username, referrer_id=message.from_user.id),
