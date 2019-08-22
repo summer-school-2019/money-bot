@@ -20,6 +20,6 @@ deploy:
       branch: develop
   - provider: heroku
     api_key: $HEROKU_API_KEY
-    app: $HEROKY_APP_NAME
+    app: $HEROKY_PROD
     on:
       branch: master
