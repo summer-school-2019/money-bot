@@ -61,3 +61,8 @@ async def get_next_task(user_id: int):
     user.current_task_id += 1
     await user.commit()
     return tasks[user.current_task_id]
+
+
+async def is_task_exists(chat_id: int):
+    task = await models.Task.find_one({"chat_id": chat_id})
+    return task is not None

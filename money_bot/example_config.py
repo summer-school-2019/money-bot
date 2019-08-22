@@ -1,3 +1,4 @@
+# Example config file
 BOT_TOKEN = ""
 QIWI_TOKEN = ""
 
