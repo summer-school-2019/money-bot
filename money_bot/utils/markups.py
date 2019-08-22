@@ -2,7 +2,7 @@
 from aiogram import types
 from aiogram.utils.callback_data import CallbackData
 
-from money_bot.utils.strings import MAIN_MENU_BUTTONS_LABELS, EARN_MENU_TEXT, ADD_TASKS_MENU_TEXT
+from money_bot.utils.strings import ADD_TASKS_MENU_TEXT, EARN_MENU_TEXT, MAIN_MENU_BUTTONS_LABELS
 
 earn_factory = CallbackData("earn", "skip")
 add_tasks_factory = CallbackData("add_tasks", "data")
@@ -16,7 +16,7 @@ def get_main_menu_markup():
         MAIN_MENU_BUTTONS_LABELS["invite"],
         MAIN_MENU_BUTTONS_LABELS["withdrawal"],
         MAIN_MENU_BUTTONS_LABELS["rules"],
-        MAIN_MENU_BUTTONS_LABELS["add_tasks"]
+        MAIN_MENU_BUTTONS_LABELS["add_tasks"],
     ]
 
     keyboard_markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)

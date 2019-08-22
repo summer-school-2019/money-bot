@@ -1,10 +1,10 @@
 from money_bot.handlers import (
+    add_tasks_handlers,
     balance_handlers,
     commands_handlers,
     earn_handlers,
     invite_handlers,
     main_menu_buttons_handlers,
-    add_tasks_handlers
 )
 
 
