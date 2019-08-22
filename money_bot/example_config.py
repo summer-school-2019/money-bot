@@ -1,3 +1,4 @@
+# Config file
 BOT_TOKEN = ""
 
 CLUSTER_NAME = ""
