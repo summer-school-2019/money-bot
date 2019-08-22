@@ -12,7 +12,7 @@ async def process_earn_btn(message: types.Message):
 
 async def process_play_btn(message: types.Message):
     await states.GlobalStates.play_btn.set()
-    await message.answer(f'"{message.text}" clicked')
+    await game_handlers.entry_point(message)
 
 
 async def process_balance_btn(message: types.Message):
